@@ -1,0 +1,11 @@
+Start: Thu, 30 Apr 2015 09:00:00 -0700 
+End: Thu, 30 Apr 2015 09:30:00 -0700 
+Tasks: Read through and digest assignment
+
+End: Thu, 30 Apr 2015 09:30:00 -0700 
+End: Thu, 30 Apr 2015 10:05:42 -0700 
+Tasks: read, plan, research doing loopback.php
+
+Start: Thu, 30 Apr 2015 10:05:42 -0700 
+End: Thu, 30 Apr 2015 11:53:42 -0700 
+Tasks: coded, debugged, then checkin working loopback.php

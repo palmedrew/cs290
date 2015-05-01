@@ -9,3 +9,11 @@ Tasks: read, plan, research doing loopback.php
 Start: Thu, 30 Apr 2015 10:05:42 -0700 
 End: Thu, 30 Apr 2015 11:53:42 -0700 
 Tasks: coded, debugged, then checkin working loopback.php
+
+Start: Thu, 30 Apr 2015 13:35:42 -0700 
+End: Thu, 30 Apr 2015 15:53:42 -0700 
+Tasks: worked on and finished multtable.php
+
+Start: Thu, 30 Apr 2015 21:35:42 -0700 
+End: Fri, 01 May 2015 01:33:42 -0700 
+Tasks: did the login/content sessions. about 2 hour code and 2 hour debug

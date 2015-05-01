@@ -63,6 +63,9 @@
     	http://www.textfixer.com/tutorials/css-tables.php   -->
       <!-- CSS goes in the document HEAD or added to your external stylesheet -->
     <style type="text/css">
+    table {
+        margin: auto;
+    }
     table.gridtable {
 	  font-family: verdana,arial,sans-serif;
 	  font-size:11px;

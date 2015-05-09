@@ -1,0 +1,4 @@
+# ignore my db connection info
+##############################
+db_connection.php
+

@@ -1,0 +1,23 @@
+body {
+	font-family: sans-serif;
+	text-align: center;
+}
+
+table{
+	margin: auto; //center the table on page
+      //  border-collapse: collapse;
+}
+
+table, th, td {
+	border:1px solid black;
+}
+
+p {
+	color: red;
+}
+
+fieldset {
+	border: 1px solid #781351;
+	width: 20em;
+	margin: auto;
+}

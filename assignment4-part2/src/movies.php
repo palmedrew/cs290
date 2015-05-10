@@ -75,11 +75,11 @@
 <form name="myfrm" method="POST" action="movies.php">
 <fieldset>
 <h2>Add Movie to Inventory</h2>
-<p><label for="name">Name:</label><input type="text" id="name" name="name" required>
+<p><label for="name">Name:</label><input type="text" id="name" name="name" >
 <p><label for="category">Category:</label>
-   <input type="text" id="category" name="category" value="">
+   <input type="text" id="category" name="category" value="" >
 <p><label for="length">Length:</label>
-   <input type="number" id="length" name="length" min="0" max="4000000000" value="0">
+   <input type="text" id="length" name="length" >
    in minutes
 <p><button type="submit" name="insert" value="movies">Add Movie</button>
 </fieldset> 

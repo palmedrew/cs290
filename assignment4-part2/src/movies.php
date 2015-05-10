@@ -102,14 +102,13 @@
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {  #get stuff from form
     if (isset($_POST['insert'])) {
       $dbAction = 'insert';
-      if (empty($_POST['name'])) {
-        $error .= 'Title is required<br>';
-      }  else {
-        $name = test_input($_POST['name']);
-        if (isset($_POST['category'])) $category = (!empty(test_input($_POST['category']))) ? test_input($_POST['category']) : NULL;
-        $length = (int)test_input($_POST['length']);
-        $validParams = true;
-      } // end if-else name
+      if (empty($_POST['name'])) $error .= 'Name is required<br>';
+      else $name = test_input($_POST['name']); 
+      if (isset($_POST['category'])) $category = (!empty(test_input($_POST['category']))) ? test_input($_POST['category']) : NULL;
+      $length = test_input($_POST['length']);
+      if (!my_is_int($length)) $error .= 'Length must be an integer that is zero or greater<br>';
+      else $length = (int)$length;
+      if (empty($error)) $validParams = true;
     } elseif (isset($_POST['update'])) {
       $dbAction = 'update';
       $arr = explode("-", test_input($_POST['update']));

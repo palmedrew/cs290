@@ -220,6 +220,17 @@
         } else { //no result
           $error .= 'Select All failed: ' . $mysqli->error . '<br/>';
         } //end no result
+        $sql = "SELECT DISTINCT category from Movies290 ORDER BY category";
+        if ($result = $mysqli->query($sql)) {
+          unset($cat_results);
+          $cat_results = array();
+          while ($row = $result->fetch_row()) {
+          array_push($cat_results, $row);	
+          }
+          $result->free();
+        } else {
+          $error .= 'Select distinct category failed: ' . $mysqli->error . '<br/>';
+        }
       }
       $mysqli->close();
     } // end good to execute

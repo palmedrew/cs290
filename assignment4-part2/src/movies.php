@@ -27,7 +27,7 @@
   if ($mysqli->connect_errno)
     $error .= 'Failed connect MySQL: (' . $mysqli->connect_errno . ')' . $mysqli->connect_error . '<br>';
     
-  $sql = "SELECT id,name,category,length,rented from Movies290";
+  $sql = "SELECT * from Movies290";
   if ($result = $mysqli->query($sql)) { //got result
     while ($row = $result->fetch_row()) {
       array_push($arr_results, $row);	
@@ -168,7 +168,7 @@
         }
       } elseif ($dbAction == "filter") {
         if (!empty($filterCat) && $filterCat != "All Movies") {
-          $stmt = $mysqli->prepare("select id,name,category,length,rented from Movies290 where category = ?"); 
+          $stmt = $mysqli->prepare("select * from Movies290 where category = ?"); 
           if (!$stmt) {
             $error .= "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
             $mysqli->close();
@@ -176,7 +176,7 @@
             $bindWorked = $stmt->bind_param("s", $filterCat);
           }
         } elseif (empty($filterCat)) {
-          $stmt = $mysqli->prepare("select id,name,category,length,rented from Movies290 where category is null");
+          $stmt = $mysqli->prepare("select * from Movies290 where category is null");
           if (!$stmt) {
             $error .= "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
             $mysqli->close();
@@ -206,7 +206,7 @@
         if ($dbAction == "filter" && $filterCat != "All Movies") {
           $result = $stmt->get_result();
         } else {
-          $sql = "SELECT id,name,category,length,rented from Movies290";
+          $sql = "SELECT * from Movies290";
           $result = $mysqli->query($sql);
         }
         if ($stmt) $stmt->close();        

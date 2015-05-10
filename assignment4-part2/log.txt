@@ -1,0 +1,32 @@
+Start: Tue, 05 May 2015 09:00:00 -0700 
+End: Tue, 05 May 2015 09:30:00 -0700 
+Tasks: Read through and digest assignment
+
+End: Thu, 07 May 2015 09:30:00 -0700 
+End: Thu, 07 Apr 2015 09:45:00 -0700 
+Tasks: created table
+
+Start: Thu, 07 May 2015 10:05:42 -0700 
+End: Thu, 07 May 2015 11:53:42 -0700 
+Tasks: designed/worked out form
+
+Start: Fri, 8 May 2015 08:43:32 -0700 
+End: Fri, 8 May 2015 17:43:32 -0700 
+Tasks: initial semiworking php 
+
+Start: Sat, 9 May 2015 10:02:24 -0700 
+End: Sat, 9 May 2015 16:02:24 -0700 
+Tasks: new logic for movies.php now shows table on page display no filter select on movie category
+
+Start: Sat, 9 May 2015 16:10:04 -0700 
+End: Sat, 9 May 2015 16:16:04 -0700 
+Tasks: ignoring db_connection.php from git
+
+Start: Sat, 9 May 2015 21:00:35 -0700 
+End: Sat, 9 May 2015 22:00:35 -0700 
+Tasks: movies.php: got the filter select working 
+
+Start: Sat, 9 May 2015 22:00:11 -0700 
+End: Sat, 9 May 2015 22:34:11 -0700 
+Tasks: movies.php: changed to select * and end with change to use text input form
+

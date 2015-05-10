@@ -19,6 +19,7 @@
   $status = array( 0 => "Available", 1 => "Checked Out", "0" => "Available", "1" => "Checked Out");
   $error = '';
   $arr_results = array();
+  $cat_results = array();
   $mysqli = NULL;
   
   //try get connection
@@ -34,6 +35,17 @@
     $result->free();
   } else { //no result
     $error .= 'Select all failed: ' . $mysqli->error . '<br/>';
+    $mysqli->close();
+  } //end no result
+  
+  $sql = "SELECT DISTINCT category from Movies290 ORDER BY category";
+  if ($result = $mysqli->query($sql)) { //got result
+    while ($row = $result->fetch_row()) {
+      array_push($cat_results, $row);	
+    }
+    $result->free();
+  } else { //no result
+    $error .= 'Select distinct category failed: ' . $mysqli->error . '<br/>';
     $mysqli->close();
   } //end no result
    
@@ -79,6 +91,7 @@
   $movieBool = '';
   $dbAction = '';
   $validParams = $bindWorked = false;
+  $filterCat = '';
   
   $stmt = NULL;
 
@@ -106,6 +119,10 @@
       $validParams = true;
     } elseif (isset($_POST['deleteAll'])) {
       $dbAction = 'deleteAll';
+      $validParams = true;
+    } elseif (isset($_POST['filterOnCat'])) {
+      $dbAction = 'filter';
+      $filterCat = test_input($_POST['filterCat']);
       $validParams = true;
     } else {
       $error .= 'No dbAction requested<br>';
@@ -149,6 +166,24 @@
         } else {
           $bindWorked = true;
         }
+      } elseif ($dbAction == "filter") {
+        if (!empty($filterCat) && $filterCat != "All Movies") {
+          $stmt = $mysqli->prepare("select id,name,category,length,rented from Movies290 where category = ?"); 
+          if (!$stmt) {
+            $error .= "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+            $mysqli->close();
+          } else {
+            $bindWorked = $stmt->bind_param("s", $filterCat);
+          }
+        } elseif (empty($filterCat)) {
+          $stmt = $mysqli->prepare("select id,name,category,length,rented from Movies290 where category is null");
+          if (!$stmt) {
+            $error .= "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+            $mysqli->close();
+          } else {
+            $bindWorked = true;
+          }
+        }
       } 
     } # end connect prep bind
     
@@ -161,13 +196,21 @@
     
     #check if error..no error mean good to execute
     if (empty($error)) { #good to execute
-      if (!$stmt->execute()) {
+      $execution = false;
+      if ($dbAction != "filter" || $filterCat != "All Movies") $execution = $stmt->execute();
+      if ($stmt && !$execution) {
         $error .= "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         $stmt->close();
-      } else { //else exe
-        $stmt->close();
-        $sql = "SELECT id,name,category,length,rented from Movies290";
-        if ($result = $mysqli->query($sql)) { //got result
+      } else {
+        $result = NULL;
+        if ($dbAction == "filter" && $filterCat != "All Movies") {
+          $result = $stmt->get_result();
+        } else {
+          $sql = "SELECT id,name,category,length,rented from Movies290";
+          $result = $mysqli->query($sql);
+        }
+        if ($stmt) $stmt->close();        
+        if ($result) { //got result
           unset($arr_results);
           $arr_results = array();
           while ($row = $result->fetch_row()) {
@@ -177,7 +220,7 @@
         } else { //no result
           $error .= 'Select All failed: ' . $mysqli->error . '<br/>';
         } //end no result
-      } // end els exe 
+      }
       $mysqli->close();
     } // end good to execute
     
@@ -202,7 +245,21 @@
   } // end foreach
   echo '</tbody></table><br>';
   echo '<button type="submit" name="deleteAll" value="movies">Delete All</button>';
-  echo '</form></section>';   
+  echo '</form></section>';
+  
+  echo '<br><br><br><br>';
+  echo '<section>';
+  echo '<form method="POST" action="movies.php">';
+  echo '<fieldset><legend><b>Filter On Category</b></legend>';
+  echo '<select name="filterCat">';
+  echo '<option value="All Movies" selected>All Movies</option>';
+  foreach ($cat_results as $v) {
+    if (empty($v[0])) echo '<option value="">None/NULL</option>';
+    else echo '<option value="',$v[0],'">',$v[0],'</option>';
+  } // end foreach
+  echo '</select>';
+  echo '<button type="submit" name="filterOnCat" value="movie">Filter</button>';
+  echo '</fieldset></form></section>';     
 ?>
 </body>
 </html>

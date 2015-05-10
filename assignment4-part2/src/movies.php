@@ -16,6 +16,10 @@
     return $data;
   }
   
+  function my_is_int($a) {
+    return preg_match("/^[0-9]+$/", $a);
+  }
+  
   $status = array( 0 => "Available", 1 => "Checked Out", "0" => "Available", "1" => "Checked Out");
   $error = '';
   $arr_results = array();

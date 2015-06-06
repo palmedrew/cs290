@@ -146,9 +146,7 @@ if(isset($_POST['registerSubmit']) && $_POST['registerSubmit'] == 'true'){
     			$('.fvalid').remove();
     			$(':input', '#registerForm')
     			  .not(':button, :submit, :reset, :hidden')
-    			  .val('')
-    			  .removeAttr('checked')
-    			  .removeAttr('selected');			
+    			  .val('');			
     			//alert(postData);
     			$.ajax({ type:'POST', dataType:'json', data:postData })
     			  .done(function(data){
@@ -202,9 +200,7 @@ if(isset($_POST['registerSubmit']) && $_POST['registerSubmit'] == 'true'){
     			$('.fvalid').remove();
     			$(':input', '#loginForm')
     			  .not(':button, :submit, :reset, :hidden')
-    			  .val('')
-    			  .removeAttr('checked')
-    			  .removeAttr('selected'); 			
+    			  .val(''); 			
     			//alert(postData);
     			$.ajax({ type:'POST', dataType:'json', data:postData })
     			  .done(function(data){
@@ -223,9 +219,7 @@ if(isset($_POST['registerSubmit']) && $_POST['registerSubmit'] == 'true'){
     			        $('#register-group').append('<div class="fvalid">' + data.register + '</div>');
     			        $(':input', '#registerForm')
     			          .not(':button, :submit, :reset, :hidden')
-    			          .val('')
-    			          .removeAttr('checked')
-    			          .removeAttr('selected');
+    			          .val(''); 
     			        $(".fvalid").fadeOut(2000);
     			     }
     			  }) //.done   			

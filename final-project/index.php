@@ -168,8 +168,17 @@ $mysqli->close();
                    required : "Simple Yes or No, please",
                 }
              },
+             // fix placement of error message with radio buttons
+             // ref:  http://stackoverflow.com/questions/11123055/jquery-validation-custom-error-message-display-for-radio-button
+             errorPlacement: function(error, element) {
+            	if (element.attr("type") == "radio") {
+                	error.insertBefore(element);
+            	} else {
+                	error.insertAfter(element);
+            	}
+        	 },
              submitHandler : function(form) {
-             	$('.invalid').remove();	
+             	$('.invalid').remove();
                	var postData = $("#BeerForm").serialize();
                	//alert(postData);
                	
@@ -184,12 +193,8 @@ $mysqli->close();
     			           $('#message').append('<div class="invalid">' + data.errors.add + '</div>');
     			     } else {
     			        $('#message').append('<div class="invalid">' + data.action + '</div>');
-    			        // clear form data
-    			        $(':input', '#BeerForm')
-    			          .not(':button, :submit, :reset, :hidden')
-    			          .val('')
-    			          .removeAttr('checked')
-    			          .removeAttr('selected');
+    			        // clear text in form data -- i can't figure out the radio????
+    			        $('#BeerForm').find("input[type=text]").val('');
     			        //construct new row
     			     	var newRow = $("<tr/>");
     			     	//add td's to the new row

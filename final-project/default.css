@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+	font-family: "Century Gothic", Arial, sans-serif;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+	color: #666666;
+	font-size: 12px;
+}
+
+h1 {
+	font-weight: normal;
+	color: #333333;
+	font-size: 22px;
+	text-align:center;
+}
+
+h2 {
+	font-weight: normal;
+	color: #333333;
+	font-size: 18px;
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #006699;
+}
+
+a:hover {
+	color: #0099CC;
+}
+
+footer {
+  margin: auto;
+  text-align: center;
+}
+
+input {
+	color: #666666;
+	border: 1px solid #CCCCCC;
+}
+
+label {
+	width: 120px;
+	float: left;
+	font-size: 70%;
+	font-weight: bold;
+	clear: both;
+	margin-top: 6px;
+}
+
+label .info {
+	font-size: 80%;
+	font-weight: normal;
+	color: #999;
+}
+
+table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.valid, .invalid , .fvalid{
+	font-size: 80%;
+}
+
+.valid, .fvalid {
+	clear: both;
+	font-weight: bold;
+	color: #009900;
+}
+
+.invalid, .error {
+	clear: both;
+	font-weight: bold;
+	color: #CC3333;
+}
+
+.box400 {
+	width: 400px;
+	margin: auto;
+	padding: 20px;
+	border: 1px dashed #ccc;
+}
+
+.clear {
+	clear: both;
+}
+
+#message .invalid {
+  text-align: center;
+}
+
